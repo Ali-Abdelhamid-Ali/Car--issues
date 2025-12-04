@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Diagnosis System - AI-Powered Vehicle Complaint Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-car-crash"></i>
+                <span>Car Diagnosis System</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#submit">Submit Complaint</a></li>
+                <li><a href="#search">Search</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI-Powered Car Diagnosis System</h1>
+                <p>Submit your car complaint and get instant AI-powered diagnosis and chat with our virtual mechanic</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('submit')">
+                        <i class="fas fa-file-medical"></i> Submit Complaint
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('search')">
+                        <i class="fas fa-search"></i> Search History
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-car fa-10x"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Complaint Section -->
+    <section id="submit" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-file-medical"></i>
+                Submit New Complaint
+            </h2>
+            <div class="form-card">
+                <form id="complaintForm">
+                    <!-- Customer Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Customer Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="customerName">Full Name *</label>
+                                <input type="text" id="customerName" name="customer_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">Email</label>
+                                <input type="email" id="customerEmail" name="customer_email">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">Phone Number</label>
+                                <input type="tel" id="customerPhone" name="customer_phone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-car"></i> Vehicle Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="licensePlate">License Plate *</label>
+                                <input type="text" id="licensePlate" name="license_plate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="carMake">Make</label>
+                                <input type="text" id="carMake" name="car_make" placeholder="e.g., Toyota">
+                            </div>
+                            <div class="form-group">
+                                <label for="carModel">Model</label>
+                                <input type="text" id="carModel" name="car_model" placeholder="e.g., Camry">
+                            </div>
+                            <div class="form-group">
+                                <label for="carYear">Year</label>
+                                <input type="number" id="carYear" name="car_year" min="1900" max="2025">
+                            </div>
+                            <div class="form-group">
+                                <label for="carMileage">Mileage (km)</label>
+                                <input type="number" id="carMileage" name="car_mileage" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complaint Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Complaint Details</h3>
+                        <div class="form-group">
+                            <label for="complaintText">Describe the Problem *</label>
+                            <textarea id="complaintText" name="complaint_text" rows="6"
+                                placeholder="Please describe the issue you're experiencing with your vehicle in detail..."
+                                required></textarea>
+                        </div>
+                        <div class="form-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="crash" name="crash">
+                                <span>This complaint involves a crash</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="fire" name="fire">
+                                <span>This complaint involves a fire</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Complaint
+                    </button>
+                </form>
+            </div>
+
+            <!-- Result Card (Hidden initially) -->
+            <div id="resultCard" class="result-card" style="display: none;">
+                <div class="result-header">
+                    <h3><i class="fas fa-check-circle"></i> Complaint Submitted Successfully!</h3>
+                </div>
+                <div class="result-body">
+                    <div class="result-item">
+                        <strong>Complaint ID:</strong>
+                        <span id="complaintId"></span>
+                    </div>
+                    <div class="result-item">
+                        <strong>Predicted Category:</strong>
+                        <span id="predictedCategory" class="category-badge"></span>
+                    </div>
+                    <div class="result-item">
+                        <strong>Confidence:</strong>
+                        <span id="confidence"></span>
+                    </div>
+                    <button class="btn btn-primary" onclick="startChat()">
+                        <i class="fas fa-comments"></i>
+                        Chat with AI Mechanic
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="section chat-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-comments"></i>
+                Chat with AI Mechanic
+            </h2>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-info">
+                        <h3>Vehicle: <span id="chatCarInfo"></span></h3>
+                        <p>Complaint: <span id="chatComplaintCategory"></span></p>
+                    </div>
+                    <button class="btn btn-danger btn-small" onclick="closeChat()">
+                        <i class="fas fa-times"></i>
+                        Close Chat
+                    </button>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type your message..."
+                        onkeypress="handleKeyPress(event)">
+                    <button class="btn btn-primary" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-search"></i>
+                Search Vehicle History
+            </h2>
+            <div class="search-card">
+                <div class="search-input-group">
+                    <input type="text" id="searchPlate" placeholder="Enter license plate number...">
+                    <button class="btn btn-primary" onclick="searchVehicle()">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Car Diagnosis System. Powered by AI & LangChain.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="spinner-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

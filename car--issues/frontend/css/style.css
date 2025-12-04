@@ -1,0 +1,571 @@
+/* Car Diagnosis System - Professional Styling */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --dark-bg: #1f2937;
+    --light-bg: #f9fafb;
+    --text-dark: #111827;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --success-color: #10b981;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-brand i {
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 4rem 0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-image {
+    text-align: center;
+    opacity: 0.3;
+}
+
+/* Sections */
+.section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.section-title i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* Form Styling */
+.form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.form-section h3 i {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-checkboxes {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #059669;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Result Card */
+.result-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.result-header {
+    background: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 5px 5px 0 0;
+    margin: -2rem -2rem 1rem -2rem;
+}
+
+.result-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-body {
+    padding: 1rem 0;
+}
+
+.result-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-item:last-of-type {
+    border-bottom: none;
+}
+
+.category-badge {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Chat Section */
+.chat-section {
+    background-color: white;
+}
+
+.chat-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.chat-info p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+}
+
+.chat-messages {
+    height: 500px;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background-color: #f9fafb;
+}
+
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    white-space: pre-wrap; /* Preserve newlines and spaces */
+}
+
+.message.user .message-content {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.message.assistant .message-content {
+    background-color: white;
+    border: 2px solid var(--border-color);
+}
+
+.message-role {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.message.user .message-role {
+    color: rgba(255,255,255,0.8);
+}
+
+.message.assistant .message-role {
+    color: var(--primary-color);
+}
+
+.chat-input {
+    display: flex;
+    padding: 1rem;
+    background-color: white;
+    border-top: 2px solid var(--border-color);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.chat-input button {
+    border-radius: 0 5px 5px 0;
+}
+
+/* Search */
+.search-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-input-group input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-results {
+    display: grid;
+    gap: 1rem;
+}
+
+.complaint-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.complaint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.complaint-body {
+    margin-top: 1rem;
+}
+
+/* Statistics */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.chart-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Loading Spinner */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.spinner-overlay p {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-bg);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+
+    .message-content {
+        max-width: 90%;
+    }
+}
